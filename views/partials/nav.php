@@ -14,7 +14,7 @@
         </ul>
         <ul class="navbar-nav ms-auto"> <!-- ms auto for right align -->
         <li class="nav-item">
-                <a href="" class="nav-link fs-5 btnPostJob">Post Job</a>
+                <a href="/listings/create" class="nav-link fs-5 btnPostJob">Post Job</a>
             </li>
             <li class="nav-item">
                 <a href="" class="nav-link fs-5">Login</a>

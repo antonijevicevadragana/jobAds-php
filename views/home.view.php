@@ -89,7 +89,7 @@ require basePath('/views/partials/hero.php');
         </div>
     </div>
     <div class="d-flex justify-content-center align-items-center" style="height: 10vh;">
-        <a href="" class="text-center text-light fs-4">
+        <a href="/listings" class="text-center text-light fs-4">
             <i class="fa fa-arrow-alt-circle-right"></i>
             Show All Jobs
         </a>
