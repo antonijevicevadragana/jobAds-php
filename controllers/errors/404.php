@@ -1,3 +1,2 @@
 <?php 
-
-echo "Error 404";
+loadView('errors/404');

@@ -1,12 +1,6 @@
 <?php require '../helpers.php';
-//loadView('home');
 
-$routes = [
-'/' =>  'controllers/home.php', 
-'/listings' => 'controllers/listings/index.php',
-'/listings/create' => 'controllers/listings/create.php',
-'404' => 'controllers/errors/404.php',
-];
+$routes = require '../routes.php';
 
 $uri = $_SERVER['REQUEST_URI'];
 
