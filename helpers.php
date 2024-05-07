@@ -6,11 +6,12 @@ function basePath($path = "")
 }
 
 
-function loadView($name)
+function loadView($name, $data=[])
 {
    $path = basePath("views/{$name}.view.php");
 
    if (file_exists($path)) {
+      extract($data);
       require $path;
    } else {
       echo "View {$name} dosen't exist";

@@ -1,4 +1,9 @@
-<?php require '../helpers.php';
+<?php 
+require '../helpers.php';
+require basePath('Database.php');
+
+
+
 
 //$routes = require '../routes.php';
 

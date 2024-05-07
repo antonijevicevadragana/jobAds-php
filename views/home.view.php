@@ -8,85 +8,33 @@ require basePath('/views/partials/hero.php');
 
 <section>
     <div class="row row-cols-1 row-cols-xl-2 g-4 mx-auto ">
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-8">
-                            <h5 class="card-text">Projektni menadžer (Project Management)</h5>
-                            <h6 class="card-text">M&I Systems Co.</h6>
-                            <p class="card-text">Pridruži se našem Projektnom timu i preuzmi ključnu ulogu u vođenju inovativnih projekata!:</p>
-                            <p><i class="fa-solid fa-location-dot"></i> Remote</p>
-                            <p><i class="fa-solid fa-clock"></i> 30.04.2024</p>
-                            <p>
-                                <span class="tags">HTML</span>
-                                <span class="tags">CSS</span>
-                                <span class="tags">JS</span>
-                                <span class="tags">PHP</span>
-                                <span class="tags">Laravel</span>
-                            </p>
-                        </div>
-                        <div class="col-4">
-                            <img src="images/c1.png" class="mb-2" style="width: 100px;" alt="...">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-8">
-                            <h5 class="card-text">Projektni menadžer (Project Management)</h5>
-                            <h6 class="card-text">M&I Systems Co.</h6>
-                            <p class="card-text">Pridruži se našem Projektnom timu i preuzmi ključnu ulogu u vođenju inovativnih projekata!:</p>
-                            <p><i class="fa-solid fa-location-dot"></i> Remote</p>
-                            <p><i class="fa-solid fa-clock"></i> 30.04.2024</p>
-                            <p>
-                                <span class="tags">HTML</span>
-                                <span class="tags">CSS</span>
-                                <span class="tags">JS</span>
-                                <span class="tags">PHP</span>
-                                <span class="tags">Laravel</span>
-                            </p>
-                        </div>
-                        <div class="col-4">
-                            <div class="col-4">
-                                <img src="images/c1.png" class="mb-2" style="width: 100px;" alt="...">
+        <?php foreach ($listings as $listing) : ?>
+            <div class="col">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-8">
+                                <h5 class="card-text"><a href="/listings/<?= $listing->id ?>"><?= $listing->title ?></a></h5>
+                                <h6 class="card-text"><?= $listing->company ?></h6>
+                                <p class="card-text"><?= $listing->role_summary ?></p>
+                                <p><i class="fa-solid fa-location-dot"></i> <?= $listing->work_location ?></p>
+                                <p><i class="fa-solid fa-clock"></i> <?= $listing->valid_until ?></p>
+                                <p>
+                                <?php $tags = explode(',', $listing->tags); ?>
+                                <?php foreach ($tags as $tag) : ?>
+                                 <span class="tags"><?= mb_strtoupper($tag) ?></span>
+                                 <?php endforeach; ?>
+                                </p>
                             </div>
+                            <!-- <div class="col-4">
+                                <img src="images/c1.png" class="mb-2" style="width: 100px;" alt="...">
+                            </div> -->
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="col">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-8">
-                            <h5 class="card-text">Projektni menadžer (Project Management)</h5>
-                            <h6 class="card-text">M&I Systems Co.</h6>
-                            <p class="card-text">Pridruži se našem Projektnom timu i preuzmi ključnu ulogu u vođenju inovativnih projekata!:</p>
-                            <p><i class="fa-solid fa-location-dot"></i> Remote</p>
-                            <p><i class="fa-solid fa-clock"></i> 30.04.2024</p>
-                            <p>
-                                <span class="tags">HTML</span>
-                                <span class="tags">CSS</span>
-                                <span class="tags">JS</span>
-                                <span class="tags">PHP</span>
-                                <span class="tags">Laravel</span>
-                            </p>
-                        </div>
-                        <div class="col-4">
-                            <img src="images/c1.png" class="mb-2" style="width: 100px;" alt="...">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
     <div class="d-flex justify-content-center align-items-center" style="height: 10vh;">
         <a href="/listings" class="text-center text-light fs-4">
