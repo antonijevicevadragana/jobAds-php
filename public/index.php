@@ -1,13 +1,13 @@
 <?php 
 require '../helpers.php';
-require basePath('Database.php');
+require basePath('Framework/Database.php');
 
 
 
 
 //$routes = require '../routes.php';
 
-require_once basePath('Router.php');
+require_once basePath('Framework/Router.php');
 $router= new Router();
 $routes = require basePath('routes.php');
 

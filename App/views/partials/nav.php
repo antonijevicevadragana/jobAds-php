@@ -9,7 +9,7 @@
             
 
             <li class="nav-item">
-                <a href="" class="nav-link fs-5">All Job</a>
+                <a href="/listings" class="nav-link fs-5">All Job</a>
             </li>
         </ul>
         <ul class="navbar-nav ms-auto"> <!-- ms auto for right align -->

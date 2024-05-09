@@ -1,13 +1,13 @@
 <?php
 //require_once '../views/partials/hero.php';
 
-require basePath('/views/partials/head.php');
-require basePath('/views/partials/nav.php');
-require basePath('/views/partials/hero.php');
+loadPartials('head');
+loadPartials('nav');
+loadPartials('hero');
 ?>
 
 <section>
-    <div class="row row-cols-1 row-cols-xl-2 g-4 mx-auto ">
+    <div class="row row-cols-1 row-cols-xl-2 g-4 mx-auto mb-5">
 
         <?php foreach ($listings as $listing) : ?>
             <div class="col">
@@ -36,13 +36,8 @@ require basePath('/views/partials/hero.php');
             </div>
         <?php endforeach; ?>
     </div>
-    <div class="d-flex justify-content-center align-items-center" style="height: 10vh;">
-        <a href="/listings" class="text-center text-light fs-4">
-            <i class="fa fa-arrow-alt-circle-right"></i>
-            Show All Jobs
-        </a>
-    </div>
 </section>
 <?php
-require basePath('/views/partials/footer.php');
+loadPartials('footer');
+
 ?>

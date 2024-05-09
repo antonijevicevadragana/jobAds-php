@@ -1,11 +1,11 @@
 <?php
 //require_once '../views/partials/hero.php';
-require basePath('/views/partials/head.php');
-require basePath('/views/partials/nav.php');
+loadPartials('head');
+loadPartials('nav');
 ?>
 
 <!-- section for listing -->
-<div class="row row-cols-1 row-cols-xl-2 g-4 mx-auto justify-content-center align-items-center mb-5 mt-4">
+<div class="row row-cols-1 row-cols-xl-2 g-4 mx-auto justify-content-center align-items-center mb-5 mt-4 mx-auto" style="min-height: 70vh;">
         <div class="card d-flex justify-content-center align-items-center">
             <div class="card-body">
                 <div class="row">
@@ -52,5 +52,6 @@ require basePath('/views/partials/nav.php');
 
 
 <?php
-require basePath('/views/partials/footer.php');
+loadPartials('footer');
+
 ?>
