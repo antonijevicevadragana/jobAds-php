@@ -1,0 +1,15 @@
+{
+    "name": "antonijevicevadragana/workopia",
+    "description": "Job listing application",
+    "authors": [
+      {
+        "name": "Dragana"
+      }
+    ],
+    "autoload": {
+      "psr-4": {
+        "Framework\\": "Framework/",
+        "App\\": "App/"
+      }
+    }
+  }
