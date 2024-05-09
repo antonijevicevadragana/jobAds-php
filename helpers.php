@@ -8,7 +8,7 @@ function basePath($path = "")
 
 function loadView($name, $data=[])
 {
-   $path = basePath("views/{$name}.view.php");
+   $path = basePath("App/views/{$name}.view.php");
 
    if (file_exists($path)) {
       extract($data);
@@ -16,6 +16,16 @@ function loadView($name, $data=[])
    } else {
       echo "View {$name} dosen't exist";
    }
+}
+
+function loadPartials($name) {
+$path =basePath("App/views/partials/{$name}.php");
+
+if (file_exists($path)) {
+   require $path;
+} else {
+   echo "Partial {$name} dosen't exist";
+}
 }
 
 
