@@ -15,7 +15,7 @@ loadPartials('hero');
                     <div class="card-body">
                         <div class="row">
                             <div class="col-8">
-                                <h5 class="card-text"><a href="/listing?id=<?= $listing->id ?>"><?= $listing->title ?></a></h5>
+                                <h5 class="card-text"><a href="/listings/<?= $listing->id ?>"><?= $listing->title ?></a></h5>
                                 <h6 class="card-text"><?= $listing->company ?></h6>
                                 <p class="card-text"><?= $listing->role_summary ?></p>
                                 <p><i class="fa-solid fa-location-dot"></i> <?= $listing->work_location ?></p>
