@@ -18,14 +18,16 @@ function loadView($name, $data=[])
    }
 }
 
-function loadPartials($name) {
-$path =basePath("App/views/partials/{$name}.php");
+function loadPartials($name, $data=[]) {
+   $partialPath= basePath("App/views/partials/{$name}.php");
+   if(file_exists($partialPath)){
+     extract($data); 
+       require $partialPath;
+   }
+   else {
+       echo "View {$name} not found!";
+   }
 
-if (file_exists($path)) {
-   require $path;
-} else {
-   echo "Partial {$name} dosen't exist";
-}
 }
 
 
@@ -42,3 +44,20 @@ function inspectAndDie($value)
    die(var_dump($value));
    echo "</pre>";
 }
+
+/**
+ * Sanitaze Data
+ * @param string $data
+ * @return string
+ */
+
+ function sanitize($data) {
+   return filter_var(trim($data), FILTER_SANITIZE_SPECIAL_CHARS);
+ }
+
+
+ function redirect($url) {
+   header("Location: {$url}");
+   exit;
+ }
+
