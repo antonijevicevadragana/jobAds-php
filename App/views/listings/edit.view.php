@@ -7,8 +7,9 @@ loadPartials('nav');
         <div class="row justify-content-center frame">
             <h1 class="text-center">Edit JOB listing </h1>
             <hr>
-            <form method="POST" action="/listings">
-            <?= loadPartials('errors', ['errors' => $errors ?? []])?>
+            <form method="POST" action="/listings/<?= $listing->id ?>">
+                <input type="hidden" name="_method" value="PUT">
+                <?= loadPartials('errors', ['errors' => $errors ?? []]) ?>
                 <h2 class="text-center">About company</h2>
                 <div class="input-box">
                     <label for="company" class="col-form-label text-md-end">Company Name</label>
@@ -28,7 +29,7 @@ loadPartials('nav');
                 </div>
                 <div class="input-box">
                     <label for="text" class="col-form-label text-md-end">Phone number</label>
-                    <input type="phone" class="form-control" name="phone" value="<?= $listing->phone?? '' ?>" placeholder="&#xf2a0;" style="font-family: Arial, FontAwesome">
+                    <input type="phone" class="form-control" name="phone" value="<?= $listing->phone ?? '' ?>" placeholder="&#xf2a0;" style="font-family: Arial, FontAwesome">
                 </div>
                 <div class="input-box">
                     <label for="email" class="col-form-label text-md-end">E-mail</label>
@@ -43,13 +44,13 @@ loadPartials('nav');
                     <input type="text" class="form-control" name="title" value="<?= $listing->title ?? '' ?>" placeholder="&#xf044;" style="font-family: Arial, FontAwesome">
                 </div>
 
-                <textarea name="role_summary" rows="10" class="custom-textarea" placeholder="Role Summary"><?= $listing->role_summary ?? ''?></textarea>
+                <textarea name="role_summary" rows="10" class="custom-textarea" placeholder="Role Summary"><?= $listing->role_summary ?? '' ?></textarea>
 
-                <textarea name="description" rows="10" class="custom-textarea"  placeholder="Job Description"><?= $listing->description ?? ''?></textarea>
+                <textarea name="description" rows="10" class="custom-textarea" placeholder="Job Description"><?= $listing->description ?? '' ?></textarea>
 
-                <textarea name="requirements" rows="10" class="custom-textarea" placeholder="Requirements"><?= $listing->requirements ?? ''?></textarea>
+                <textarea name="requirements" rows="10" class="custom-textarea" placeholder="Requirements"><?= $listing->requirements ?? '' ?></textarea>
 
-                <textarea name="benefits" rows="10" class="custom-textarea" placeholder="Benefits"><?= $listing->benefits ?? ''?></textarea>
+                <textarea name="benefits" rows="10" class="custom-textarea" placeholder="Benefits"><?= $listing->benefits ?? '' ?></textarea>
 
                 <div class="input-box">
                     <label for="tags" class="col-form-label text-md-end">Tags</label>
@@ -62,8 +63,8 @@ loadPartials('nav');
                 </div>
 
                 <div class="input-box">
-                    <label for="work_location" class="col-form-label text-md-end" value="<?= $listing->work_location ?? '' ?>" >Work Location</label>
-                    <input type="text" class="form-control" name="work_location" placeholder="&#xf3c5; remote, hybrid or on-site" style="font-family: Arial, FontAwesome">
+                    <label for="work_location" class="col-form-label text-md-end">Work Location</label>
+                    <input type="text" class="form-control" name="work_location" value="<?= $listing->work_location ?? '' ?>" placeholder="&#xf3c5; remote, hybrid or on-site" style="font-family: Arial, FontAwesome">
                 </div>
 
                 <div class="d-grid gap-2">

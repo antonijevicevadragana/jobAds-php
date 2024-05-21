@@ -62,8 +62,8 @@ loadPartials('nav');
                 </div>
 
                 <div class="input-box">
-                    <label for="work_location" class="col-form-label text-md-end" value="<?= $listing['work_location'] ?? '' ?>" >Work Location</label>
-                    <input type="text" class="form-control" name="work_location" placeholder="&#xf3c5; remote, hybrid or on-site" style="font-family: Arial, FontAwesome">
+                    <label for="work_location" class="col-form-label text-md-end"  >Work Location</label>
+                    <input type="text" class="form-control" name="work_location" value="<?= $listing['work_location'] ?? '' ?>" placeholder="&#xf3c5; remote, hybrid or on-site" style="font-family: Arial, FontAwesome">
                 </div>
 
                 <div class="d-grid gap-2">
