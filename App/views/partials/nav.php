@@ -17,10 +17,10 @@
                 <a href="/listings/create" class="nav-link fs-5 btnPostJob">Post Job</a>
             </li>
             <li class="nav-item">
-                <a href="" class="nav-link fs-5">Login</a>
+                <a href="/auth/login" class="nav-link fs-5">Login</a>
             </li>
             <li class="nav-item">
-                <a href="" class="nav-link fs-5">Register</a>
+                <a href="/auth/register" class="nav-link fs-5">Register</a>
             </li>
         </ul>
     </div>

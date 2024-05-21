@@ -101,6 +101,10 @@ footer {
   box-sizing: border-box;
 }
 
+.login{
+  min-height: 67vh;
+}
+
 .frame {
   max-width: 800px;
   /* background: transparent; */
