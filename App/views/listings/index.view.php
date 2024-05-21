@@ -7,6 +7,22 @@ loadPartials('hero');
 ?>
 
 <section>
+<div> <h1 class="text-center text-light mb-5 border border-light-subtle border border-end-0 border border-start-0 p-3">All Jobs</h1></div>
+
+<?php if (isset($_SESSION['success_message'])) : ?>
+        <div class="bg-success text-light p-3 mx-auto mb-5">
+            <p class="text-light"><?= $_SESSION['success_message'] ?> </p>
+        </div>
+        <?php unset($_SESSION['success_message']); ?>
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION['error_message'])) : ?>
+        <div class="bg-danger text-light p-3 mx-auto mb-5">
+            <p class="text-light"><?= $_SESSION['error_message'] ?> </p>
+        </div>
+        <?php unset($_SESSION['error_message']); ?>
+    <?php endif; ?>
+
     <div class="row row-cols-1 row-cols-xl-2 g-4 mx-auto mb-5">
         <?php foreach ($listings as $listing) : ?>
             <div class="col">
