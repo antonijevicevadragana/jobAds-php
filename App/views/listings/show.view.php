@@ -5,6 +5,19 @@ loadPartials('nav');
 ?>
 
 <!-- section for listing -->
+<?php if (isset($_SESSION['success_message'])) : ?>
+        <div class="bg-success text-light p-3 mx-auto mb-5">
+            <p class="text-light"><?= $_SESSION['success_message'] ?> </p>
+        </div>
+        <?php unset($_SESSION['success_message']); ?>
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION['error_message'])) : ?>
+        <div class="bg-danger text-light p-3 mx-auto mb-5">
+            <p class="text-light"><?= $_SESSION['error_message'] ?> </p>
+        </div>
+        <?php unset($_SESSION['error_message']); ?>
+    <?php endif; ?>
 <div class="row row-cols-1 row-cols-xl-2 g-4 mx-auto justify-content-center align-items-center mb-5 mt-4 mx-auto" style="min-height: 70vh;">
     <div class="card d-flex justify-content-center align-items-center">
         <div class="card-body">
