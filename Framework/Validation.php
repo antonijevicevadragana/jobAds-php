@@ -37,6 +37,17 @@ class Validation {
         return filter_var($value, FILTER_VALIDATE_EMAIL);
      }
 
+        /**
+     * validate phone
+     * 
+     * @param string $value
+     * @return bool
+     */
+    public static function phone($value) 
+    {
+       $value = trim($value);
+       return preg_match("/^[0-9]*$/", $value);
+    }
 
        /**
      * Match two values 

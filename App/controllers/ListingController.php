@@ -77,6 +77,16 @@ class ListingController
       }
     }
 
+    //validacija mail
+    if(!Validation::email($newListingData['email'])) {
+      $errors['phone'] = 'Field email is not valid';
+    }
+    //validacija telefona
+    if(!Validation::phone($newListingData['phone'])) {
+      $errors['phone'] = 'phone can contain only number';
+    }
+
+
     if (!empty($errors)) {
       //reload view with err
       loadView('listings/create', [
@@ -142,4 +152,28 @@ class ListingController
 
   redirect('/listings');
   }
+
+  /**
+   * Edit listing
+   * @param array $parms
+   * @return void
+   */
+
+   public function edit($params)
+   {
+     $id = $params['id'] ?? '';
+     $params  = [
+       'id' => $id
+     ];
+ 
+     $listing = $this->db->query('SELECT * FROM `listings` WHERE id = :id', $params)->fetch();
+ 
+     if (!$listing) {
+       ErrorController::notFound('Listing not found');
+       return;
+     }
+     loadView('listings/edit', [
+       'listing' => $listing
+     ]);
+   }
 }

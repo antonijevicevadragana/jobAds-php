@@ -10,7 +10,7 @@ loadPartials('nav');
         <div class="card-body">
         <form method="POST">
             <input type="hidden" name="_method" value="DELETE">
-            <br><a href="" type="button" class="btn btn-info btn-sm"><i class="fa-solid fa-pencil"></i>
+            <br><a href="/listings/edit/<?= $listing->id ?>" type="button" class="btn btn-info btn-sm"><i class="fa-solid fa-pencil"></i>
                 Edit</a>
             <button type="submit" class="btn btn-danger btn-sm delete-button"><i class="fa-solid fa-trash"></i>
                 Delete</button>
