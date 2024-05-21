@@ -8,7 +8,6 @@ loadPartials('hero');
 
 <section>
     <div class="row row-cols-1 row-cols-xl-2 g-4 mx-auto mb-5">
-
         <?php foreach ($listings as $listing) : ?>
             <div class="col">
                 <div class="card">
@@ -21,10 +20,10 @@ loadPartials('hero');
                                 <p><i class="fa-solid fa-location-dot"></i> <?= $listing->work_location ?></p>
                                 <p><i class="fa-solid fa-clock"></i> <?= $listing->valid_until ?></p>
                                 <p>
-                                <?php $tags = explode(',', $listing->tags); ?>
-                                <?php foreach ($tags as $tag) : ?>
-                                 <span class="tags"><?= mb_strtoupper($tag) ?></span>
-                                 <?php endforeach; ?>
+                                    <?php $tags = explode(',', $listing->tags); ?>
+                                    <?php foreach ($tags as $tag) : ?>
+                                        <span class="tags"><?= mb_strtoupper($tag) ?></span>
+                                    <?php endforeach; ?>
                                 </p>
                             </div>
                             <!-- <div class="col-4">
