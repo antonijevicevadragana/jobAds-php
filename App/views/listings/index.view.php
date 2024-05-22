@@ -4,12 +4,22 @@
 loadPartials('head');
 loadPartials('nav');
 loadPartials('hero');
+loadPartials('search');
 ?>
 
 <section>
-<div> <h1 class="text-center text-light mb-5 border border-light-subtle border border-end-0 border border-start-0 p-3">All Jobs</h1></div>
+    <?php if (isset($keywords) || isset($location)) : ?>
+        <div>
+            <h2 class="text-center text-light mb-5 border border-light-subtle border border-end-0 border border-start-0 p-3">Search results</h2>
+        </div>
 
-<?php if (isset($_SESSION['success_message'])) : ?>
+    <?php else : ?>
+        <div>
+            <h2 class="text-center text-light mb-5 border border-light-subtle border border-end-0 border border-start-0 p-3">All Jobs</h2>
+        </div>
+
+    <?php endif; ?>
+    <?php if (isset($_SESSION['success_message'])) : ?>
         <div class="bg-success text-light p-3 mx-auto mb-5">
             <p class="text-light"><?= $_SESSION['success_message'] ?> </p>
         </div>
@@ -23,6 +33,8 @@ loadPartials('hero');
         <?php unset($_SESSION['error_message']); ?>
     <?php endif; ?>
 
+
+    <!-- Job listings -->
     <div class="row row-cols-1 row-cols-xl-2 g-4 mx-auto mb-5">
         <?php foreach ($listings as $listing) : ?>
             <div class="col">

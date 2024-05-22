@@ -275,4 +275,41 @@ class ListingController
       redirect('/listings/' . $id);
     }
   }
+
+  /**
+   * Searc listings by keywords/location
+   * 
+   * @return void
+   */
+
+  public function search() {
+   // inspectAndDie($_GET);
+   $keywords = isset($_GET['keywords']) ? sanitize($_GET['keywords']) : "";
+   $location = isset($_GET['location']) ? sanitize($_GET['location']) : "";
+
+   $query = "SELECT * FROM `listings` WHERE (`title` LIKE :keywords OR tags LIKE :keywords OR company LIKE :keywords OR work_location LIKE :keywords) AND (city LIKE :location OR state LIKE :location)";
+   $params = [
+    'keywords' => "%{$keywords}%",
+    'location' => "%{$location}%"
+   ];
+
+   $listings = $this->db->query($query, $params)->fetchAll();
+
+   if (!$listings) {
+    $_SESSION['error_message'] = 'Not match for ' . $keywords;
+    loadView('/listings/index', [
+      'listings' => $listings,
+      'keywords' => $keywords,
+      'location' => $location
+     ]);
+     exit;
+   }
+   //inspectAndDie($listings);
+   loadView('/listings/index', [
+    'listings' => $listings,
+    'keywords' => $keywords,
+    'location' => $location
+   ]);
+
+  }
 }

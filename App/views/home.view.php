@@ -4,9 +4,12 @@
 loadPartials('head');
 loadPartials('nav');
 loadPartials('hero');
+loadPartials('search');
 ?>
 
 <section>
+<div> <h2 class="text-center text-light mb-5 border border-light-subtle border border-end-0 border border-start-0 p-3">Recent Jobs</h2></div>
+
     <div class="row row-cols-1 row-cols-xl-2 g-4 mx-auto ">
 
         <?php foreach ($listings as $listing) : ?>
