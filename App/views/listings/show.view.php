@@ -2,6 +2,7 @@
 //require_once '../views/partials/hero.php';
 loadPartials('head');
 loadPartials('nav');
+use Framework\Authorization;
 ?>
 
 <!-- section for listing -->
@@ -21,6 +22,7 @@ loadPartials('nav');
 <div class="row row-cols-1 row-cols-xl-2 g-4 mx-auto justify-content-center align-items-center mb-5 mt-4 mx-auto" style="min-height: 70vh;">
     <div class="card d-flex justify-content-center align-items-center">
         <div class="card-body">
+            <?php if(Authorization::isOwner($listing->user_id)) : ?>
         <form method="POST">
             <input type="hidden" name="_method" value="DELETE">
             <br><a href="/listings/edit/<?= $listing->id ?>" type="button" class="btn btn-info btn-sm"><i class="fa-solid fa-pencil"></i>
@@ -29,6 +31,7 @@ loadPartials('nav');
                 Delete</button>
 
         </form>
+        <?php endif; ?>
             <div class="row">
                 <div class="col-8">
                     <h5 class="card-text"><?= $listing->title ?></h5>
