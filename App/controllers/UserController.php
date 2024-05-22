@@ -118,4 +118,19 @@ class UserController
     //inspectAndDie(Session::get('user'));
         redirect('/');
     }
+
+    /**
+     * Logout and kill session
+     * 
+     * @return void
+     */
+
+    public function logout() {
+       Session::clearAll();
+
+       $params = session_get_cookie_params();
+       setcookie('PHPSESSID', '', time() -86400, $params['path'], $params['domain']);
+
+       redirect('/');
+    }
 }
