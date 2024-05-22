@@ -1,21 +1,11 @@
 <?php 
-session_start();
 require __DIR__ . '/../vendor/autoload.php';
-require '../helpers.php';
-
 use Framework\Router;
-//require basePath('Framework/Database.php');
-//require_once basePath('Framework/Router.php');
+use Framework\Session;
+Session::start();
 
-
-// spl_autoload_register(function ($class) {
-//     $path = basePath('Framework/' . $class . '.php');
-
-//     if(file_exists($path)){
-//         require $path;
-//     }
-// });
-
+require '../helpers.php';
+//inspectAndDie(session_status());
 $router= new Router();
 $routes = require basePath('routes.php');
 

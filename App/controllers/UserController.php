@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use Framework\Database;
 use Framework\Validation;
+use Framework\Session;
 
 class UserController
 {
@@ -38,15 +39,16 @@ class UserController
      */
     public function store()
     {
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $city = $_POST['city'];
-        $state = $_POST['state'];
-        $password = $_POST['password'];
-        $confirmationPassword = $_POST['confirmation_password'];
+        $name = sanitize($_POST['name']);
+        $email = sanitize($_POST['email']);
+        $city = sanitize($_POST['city']);
+        $state = sanitize($_POST['state']);
+        $password = sanitize($_POST['password']);
+        $confirmationPassword = sanitize($_POST['confirmation_password']);
 
         $errors = [];
-        //Validation
+
+        // Validation
         if (!Validation::email($email)) {
             $errors['email'] = 'Please enter a valid email address';
         }
@@ -59,7 +61,7 @@ class UserController
             $errors['password'] = 'Password must be at least 6 characters';
         }
 
-        if (!Validation::match($password, $confirmationPassword)) {
+        if (!Validation::match($password,  $confirmationPassword)) {
             $errors['confirmation_password'] = 'Passwords do not match';
         }
 
@@ -70,39 +72,50 @@ class UserController
                     'name' => $name,
                     'email' => $email,
                     'city' => $city,
-                    'state' => $state
+                    'state' => $state,
                 ]
             ]);
             exit;
-        } 
-            // Check if email exists
-    $params = [
-        'email' => $email
-      ];
-  
-      $user = $this->db->query('SELECT * FROM users WHERE email = :email', $params)->fetch();
-  
-      if ($user) {
-        $errors['email'] = 'That email already exists';
-        loadView('users/create', [
-          'errors' => $errors
+        }
+
+        // Check if email exists
+        $params = [
+            'email' => $email
+        ];
+
+        $user = $this->db->query('SELECT * FROM users WHERE email = :email', $params)->fetch();
+
+        if ($user) {
+            $errors['email'] = 'That email already exists';
+            loadView('users/create', [
+                'errors' => $errors
+            ]);
+            exit;
+        }
+
+        // Create user account
+        $params = [
+            'name' => $name,
+            'email' => $email,
+            'city' => $city,
+            'state' => $state,
+            'password' => password_hash($password, PASSWORD_DEFAULT)
+        ];
+
+        $this->db->query('INSERT INTO users (name, email, city, state, password) VALUES (:name, :email, :city, :state, :password)', $params);
+
+        // Get new user ID
+        $userId = $this->db->conn->lastInsertId();
+
+        // Set user session
+        Session::set('user', [
+            'id' => $userId,
+            'name' => $name,
+            'email' => $email,
+            'city' => $city,
+            'state' => $state
         ]);
-        exit;
-      }
-  
-      // Create user account
-      $params = [
-        'name' => $name,
-        'email' => $email,
-        'city' => $city,
-        'state' => $state,
-        'password' => password_hash($password, PASSWORD_DEFAULT)
-      ];
-  
-      $this->db->query('INSERT INTO users (name, email, city, state, password) VALUES (:name, :email, :city, :state, :password)', $params);
-  
+    //inspectAndDie(Session::get('user'));
         redirect('/');
-
-
     }
 }
