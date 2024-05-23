@@ -66,17 +66,18 @@ class Validation
    }
 
    /**
-    * Alfa numeric validate
+    * Alfa numeric validate (alowed letter,number, (?),(!), (,),(.),(:),(;) and space)
     *
     *@param $value
     *@return bool
     */
 
-   public static function alfaNumeric($value)
-   {
-      $value = trim($value);
-      return preg_match("/^[a-zA-Z0-9 \-\?!]*$/", $value);
-   }
+    public static function alfaNumeric($value)
+    {
+        $value = trim($value);
+        return preg_match("/^[a-zA-Z0-9 \-\?!.,:;]*$/", $value);
+    }
+    
 
 
    /**
@@ -88,10 +89,8 @@ class Validation
 public static function alfaNumericPlus($value)
 {
     $value = trim($value);
-    return preg_match("/^[a-zA-Z0-9 \-\?!+]*$/", $value);
+    return preg_match("/^[a-zA-Z0-9 \-\?!+(),.:;]*$/", $value);
 }
-
-
 
    /**
     * Validate name
@@ -117,4 +116,17 @@ public static function alfaNumericPlus($value)
        $value = trim($value);
        return $value ==='remote' || $value ==='Remote' || $value === 'on-site' || $value === 'hybrid' || $value === 'Hybrid';
     }
+
+    /**
+     * Validate tags (exp. java,php,sql)
+     * 
+     * @param $value
+     * @return bool
+     */
+
+     public static function validateTags($value) 
+     {
+         $value = trim($value);
+         return preg_match("/^[a-zA-Z, ]*$/", $value);
+     }
 }

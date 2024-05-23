@@ -81,7 +81,7 @@ class ListingController
 
     //Extra validation
     if (!Validation::email($newListingData['email'])) {
-      $errors['phone'] = 'Field email is not valid';
+      $errors['email'] = 'Field email is not valid';
     }
    
     if (!Validation::number($newListingData['phone'])) {
@@ -100,7 +100,7 @@ class ListingController
       $errors['title'] = 'Job Title cannot contain numbers';
     }
 
-    if (!Validation::alfa($newListingData['tags'])) {
+    if (!Validation::validateTags($newListingData['tags'])) {
       $errors['tags'] = 'Tags cannot contain numbers';
     }
 
@@ -109,23 +109,20 @@ class ListingController
     }
 
     if (!Validation::alfaNumericPlus($newListingData['requirements'])) {
-      $errors['requirements'] = 'Requirements can contain letters, numbers, and ?,!,-,+';
+      $errors['requirements'] = 'Requirements can contain letters, numbers, and ?,!,-,+, and ,';
     }
 
-    if (!Validation::alfaNumericPlus($newListingData['requirements'])) {
-      $errors['requirements'] = 'Requirments can contain letters, numbers, and ?,!,-,+';
-    }
 
     if (!Validation::alfaNumericPlus($newListingData['benefits'])) {
-      $errors['benefits'] = 'Benefits can contain letters, numbers, and ?,!,-,+';
+      $errors['benefits'] = 'Benefits can contain letters, numbers, and ?,!,-,+, and ,';
     }
 
     if (!Validation::alfaNumericPlus($newListingData['description'])) {
-      $errors['description'] = 'Description can contain letters, numbers, and ?,!,-,+';
+      $errors['description'] = 'Description can contain letters, numbers, and ?,!,-,+, and ,';
     }
 
     if (!Validation::alfaNumericPlus($newListingData['role_summary'])) {
-      $errors['description'] = 'Description can contain letters, numbers, and ?,!,-,+';
+      $errors['role_summary'] = 'Description can contain letters, numbers, and ?,!,-,+';
     }
 
     if (!Validation::number($newListingData['salary'])) {
@@ -291,7 +288,7 @@ class ListingController
 
     //Extra validation
     if (!Validation::email($updatedValues['email'])) {
-      $errors['phone'] = 'Field email is not valid';
+      $errors['email'] = 'Field email is not valid';
     }
 
     if (!Validation::number($updatedValues['phone'])) {
@@ -310,7 +307,7 @@ class ListingController
       $errors['title'] = 'Job Title cannot contain numbers';
     }
 
-    if (!Validation::alfa($updatedValues['tags'])) {
+    if (!Validation::validateTags($updatedValues['tags'])) {
       $errors['tags'] = 'Tags cannot contain numbers';
     }
 
@@ -319,19 +316,15 @@ class ListingController
     }
 
     if (!Validation::alfaNumericPlus($updatedValues['requirements'])) {
-      $errors['requirements'] = 'Requirements can contain letters, numbers, and ?,!,-,+';
-    }
-
-    if (!Validation::alfaNumericPlus($updatedValues['requirements'])) {
-      $errors['requirements'] = 'Requirments can contain letters, numbers, and ?,!,-,+';
+      $errors['requirements'] = 'Requirements can contain letters, numbers, and ?,!,-,+, and ,';
     }
 
     if (!Validation::alfaNumericPlus($updatedValues['benefits'])) {
-      $errors['benefits'] = 'Benefits can contain letters, numbers, and ?,!,-,+';
+      $errors['benefits'] = 'Benefits can contain letters, numbers, and ?,!,-,+, and ,';
     }
 
     if (!Validation::alfaNumericPlus($updatedValues['description'])) {
-      $errors['description'] = 'Description can contain letters, numbers, and ?,!,-,+';
+      $errors['description'] = 'Description can contain letters, numbers, and ?,!,-,+, and ,';
     }
 
     if (!Validation::alfaNumericPlus($updatedValues['role_summary'])) {

@@ -8,63 +8,127 @@ loadPartials('nav');
             <h1 class="text-center">POST JOB </h1>
             <hr>
             <form method="POST" action="/listings">
-            <?= loadPartials('errors', ['errors' => $errors ?? []])?>
                 <h2 class="text-center">About company</h2>
                 <div class="input-box">
-                    <label for="company" class="col-form-label text-md-end">Company Name</label>
-                    <input type="text" class="form-control" name="company" value="<?= $listing['company'] ?? '' ?>" placeholder="&#xf1ad;" style="font-family: Arial, FontAwesome">
+                    <input type="text" class="form-control <?= isset($errors['company']) ? 'is-invalid' : '' ?>" name="company" value="<?= htmlspecialchars($listing['company'] ?? '') ?>" placeholder="&#xf1ad; Company Name *" style="font-family: Arial, FontAwesome">
+                    <?php if (isset($errors['company'])) : ?>
+                        <div class="invalid-feedback">
+                            <?= htmlspecialchars($errors['company']) ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
+
                 <div class="input-box">
-                    <label for="city" class="col-form-label text-md-end">City</label>
-                    <input type="text" class="form-control" name="city" value="<?= $listing['city'] ?? '' ?>" placeholder="&#xf3c5;" style="font-family: Arial, FontAwesome">
+                    <input type="text" class="form-control <?= isset($errors['city']) ? 'is-invalid' : '' ?>" name="city" value="<?= htmlspecialchars($listing['city'] ?? '') ?>" placeholder="&#xf3c5; City *" style="font-family: Arial, FontAwesome">
+                    <?php if (isset($errors['city'])) : ?>
+                        <div class="invalid-feedback">
+                            <?= htmlspecialchars($errors['city']) ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
+
                 <div class="input-box">
-                    <label for="state" class="col-form-label text-md-end">State</label>
-                    <input type="text" class="form-control" name="state" value="<?= $listing['state'] ?? '' ?>" placeholder="&#xf3c5;" style="font-family: Arial, FontAwesome">
+                    <input type="text" class="form-control <?= isset($errors['state']) ? 'is-invalid' : '' ?>" name="state" value="<?= htmlspecialchars($listing['state'] ?? '') ?>" placeholder="&#xf3c5; State *" style="font-family: Arial, FontAwesome">
+                    <?php if (isset($errors['state'])) : ?>
+                        <div class="invalid-feedback">
+                            <?= htmlspecialchars($errors['state']) ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
+
                 <div class="input-box">
-                    <label for="address" class="col-form-label text-md-end">Address</label>
-                    <input type="text" class="form-control" name="address" value="<?= $listing['address'] ?? '' ?>" placeholder="&#xf3c5;" style="font-family: Arial, FontAwesome">
+                    <input type="text" class="form-control <?= isset($errors['address']) ? 'is-invalid' : '' ?>" name="address" value="<?= htmlspecialchars($listing['address'] ?? '') ?>" placeholder="&#xf3c5; Address *" style="font-family: Arial, FontAwesome">
+                    <?php if (isset($errors['address'])) : ?>
+                        <div class="invalid-feedback">
+                            <?= htmlspecialchars($errors['address']) ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
+
                 <div class="input-box">
-                    <label for="text" class="col-form-label text-md-end">Phone number</label>
-                    <input type="phone" class="form-control" name="phone" value="<?= $listing['phone'] ?? '' ?>" placeholder="&#xf2a0;" style="font-family: Arial, FontAwesome">
+                    <input type="phone" class="form-control <?= isset($errors['phone']) ? 'is-invalid' : '' ?>" name="phone" value="<?= htmlspecialchars($listing['phone'] ?? '') ?>" placeholder="&#xf2a0; Phone number" style="font-family: Arial, FontAwesome">
+                    <?php if (isset($errors['phone'])) : ?>
+                        <div class="invalid-feedback">
+                            <?= htmlspecialchars($errors['phone']) ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
+
                 <div class="input-box">
-                    <label for="email" class="col-form-label text-md-end">E-mail</label>
-                    <input type="email" class="form-control" name="email" value="<?= $listing['email'] ?? '' ?>" placeholder="&#xf0e0;" style="font-family: Arial, FontAwesome">
+                    <input type="email" class="form-control <?= isset($errors['email']) ? 'is-invalid' : '' ?>" name="email" value="<?= htmlspecialchars($listing['email'] ?? '') ?>" placeholder="&#xf0e0; E-mail *" style="font-family: Arial, FontAwesome">
+                    <?php if (isset($errors['email'])) : ?>
+                        <div class="invalid-feedback">
+                            <?= htmlspecialchars($errors['email']) ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
                 <h2 class="text-center mt-5">About job position</h2>
 
-
                 <div class="input-box mb-5">
-                    <label for="title" class=" col-form-label text-md-end">Job Title</label>
-                    <input type="text" class="form-control" name="title" value="<?= $listing['title'] ?? '' ?>" placeholder="&#xf044;" style="font-family: Arial, FontAwesome">
+                    <input type="text" class="form-control <?= isset($errors['title']) ? 'is-invalid' : '' ?>" name="title" value="<?= htmlspecialchars($listing['title'] ?? '') ?>" placeholder="&#xf044; Job Title *" style="font-family: Arial, FontAwesome">
+                    <?php if (isset($errors['title'])) : ?>
+                        <div class="invalid-feedback">
+                            <?= htmlspecialchars($errors['title']) ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
-                <textarea name="role_summary" rows="10" class="custom-textarea" placeholder="Role Summary"><?= $listing['role_summary'] ?? ''?></textarea>
+                <textarea name="role_summary" rows="10" class="custom-textarea <?= isset($errors['role_summary']) ? 'is-invalid' : '' ?>" placeholder="Role Summary *"><?= htmlspecialchars($listing['role_summary'] ?? '') ?></textarea>
+                <?php if (isset($errors['role_summary'])) : ?>
+                    <div class="invalid-feedback">
+                        <?= htmlspecialchars($errors['role_summary']) ?>
+                    </div>
+                <?php endif; ?>
 
-                <textarea name="description" rows="10" class="custom-textarea"  placeholder="Job Description"><?= $listing['description'] ?? ''?></textarea>
+                <textarea name="description" rows="10" class="custom-textarea <?= isset($errors['description']) ? 'is-invalid' : '' ?>" placeholder="Job Description *"><?= htmlspecialchars($listing['description'] ?? '') ?></textarea>
+                <?php if (isset($errors['description'])) : ?>
+                    <div class="invalid-feedback">
+                        <?= htmlspecialchars($errors['description']) ?>
+                    </div>
+                <?php endif; ?>
 
-                <textarea name="requirements" rows="10" class="custom-textarea" placeholder="Requirements"><?= $listing['requirements'] ?? ''?></textarea>
+                <textarea name="requirements" rows="10" class="custom-textarea <?= isset($errors['requirements']) ? 'is-invalid' : '' ?>" placeholder="Requirements *"><?= htmlspecialchars($listing['requirements'] ?? '') ?></textarea>
+                <?php if (isset($errors['requirements'])) : ?>
+                    <div class="invalid-feedback">
+                        <?= htmlspecialchars($errors['requirements']) ?>
+                    </div>
+                <?php endif; ?>
 
-                <textarea name="benefits" rows="10" class="custom-textarea" placeholder="Benefits"><?= $listing['benefits'] ?? ''?></textarea>
+                <textarea name="benefits" rows="10" class="custom-textarea <?= isset($errors['benefits']) ? 'is-invalid' : '' ?>" placeholder="Benefits *"><?= htmlspecialchars($listing['benefits'] ?? '') ?></textarea>
+                <?php if (isset($errors['benefits'])) : ?>
+                    <div class="invalid-feedback">
+                        <?= htmlspecialchars($errors['benefits']) ?>
+                    </div>
+                <?php endif; ?>
 
                 <div class="input-box">
-                    <label for="tags" class="col-form-label text-md-end">Tags</label>
-                    <input type="text" class="form-control" name="tags" value="<?= $listing['tags'] ?? '' ?>" placeholder="&#xf02c;" style="font-family: Arial, FontAwesome">
+                    <input type="text" class="form-control <?= isset($errors['tags']) ? 'is-invalid' : '' ?>" name="tags" value="<?= htmlspecialchars($listing['tags'] ?? '') ?>" placeholder="&#xf02c; Tags *" style="font-family: Arial, FontAwesome">
+                    <?php if (isset($errors['tags'])) : ?>
+                        <div class="invalid-feedback">
+                            <?= htmlspecialchars($errors['tags']) ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
                 <div class="input-box">
-                    <label for="salary" class="col-form-label text-md-end">Salary</label>
-                    <input type="text" class="form-control" name="salary" value="<?= $listing['salary'] ?? '' ?>" placeholder="&#x24;" style="font-family: Arial, FontAwesome">
+                    <input type="text" class="form-control <?= isset($errors['salary']) ? 'is-invalid' : '' ?>" name="salary" value="<?= htmlspecialchars($listing['salary'] ?? '') ?>" placeholder="&#x24; Salary" style="font-family: Arial, FontAwesome">
+                    <?php if (isset($errors['salary'])) : ?>
+                        <div class="invalid-feedback">
+                            <?= htmlspecialchars($errors['salary']) ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
 
                 <div class="input-box">
-                    <label for="work_location" class="col-form-label text-md-end"  >Work Location</label>
-                    <input type="text" class="form-control" name="work_location" value="<?= $listing['work_location'] ?? '' ?>" placeholder="&#xf3c5; remote, hybrid or on-site" style="font-family: Arial, FontAwesome">
+                    <input type="text" class="form-control <?= isset($errors['work_location']) ? 'is-invalid' : '' ?>" name="work_location" value="<?= htmlspecialchars($listing['work_location'] ?? '') ?>" placeholder="&#xf3c5; Work Location - remote, hybrid or on-site *" style="font-family: Arial, FontAwesome">
+                    <?php if (isset($errors['work_location'])) : ?>
+                        <div class="invalid-feedback">
+                            <?= htmlspecialchars($errors['work_location']) ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
+
 
                 <div class="d-grid gap-2">
                     <br>

@@ -42,7 +42,9 @@ use Framework\Authorization;
                     <p><strong>Requirements: </strong><?= $listing->requirements ?></p>
                     <p><strong>Benefits: </strong><?= $listing->benefits ?></p>
 
-
+                   <?php if (!empty($listing->salary)) : ?>
+                    <p><i class="fa-solid fa-dollar-sign"></i> <?= numberFormating($listing->salary) ?></p>
+                    <?php endif; ?>
                     <p><i class="fa-solid fa-location-dot"></i> <?= $listing->work_location ?></p>
                     <p><i class="fa-solid fa-clock"></i> <?= $listing->valid_until ?></p>
                     <p>

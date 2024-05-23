@@ -61,3 +61,7 @@ function inspectAndDie($value)
    exit;
  }
 
+ function numberFormating($number) {
+   return number_format($number,2,",",".");
+ }
+

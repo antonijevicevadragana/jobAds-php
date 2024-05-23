@@ -159,6 +159,10 @@ footer {
   margin-top: 4px;
 }
 
+.custom-textarea.is-invalid {
+  border-color: #dc3545; 
+}
+
 .formSubmit {
   background-color: #0a4275;
   box-shadow: 0 5px 5px rgba(128, 128, 128, 0.451);

@@ -49,7 +49,7 @@ class UserController
         $errors = [];
 
         // Validation
-        if (!Validation::email($email)) {
+        if (!Validation::email($email)&& !Validation::string($email, 2)) {
             $errors['email'] = 'Please enter a valid email address';
         }
 
