@@ -57,6 +57,18 @@ class UserController
             $errors['name'] = 'Name must be between 2 and 50 characters';
         }
 
+        if (!Validation::alfa($name)) {
+            $errors['name'] = 'The field name cannot contain numbers';
+        }
+
+        if (!Validation::alfa($city)) {
+            $errors['city'] = 'The field city cannot contain numbers';
+        }
+
+        if (!Validation::alfa($state)) {
+            $errors['state'] = 'The field state cannot contain numbers';
+        }
+
         if (!Validation::string($password, 6, 50)) {
             $errors['password'] = 'Password must be at least 6 characters';
         }

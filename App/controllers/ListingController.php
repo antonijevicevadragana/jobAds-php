@@ -79,13 +79,61 @@ class ListingController
       }
     }
 
-    //validacija mail
+    //Extra validation
     if (!Validation::email($newListingData['email'])) {
       $errors['phone'] = 'Field email is not valid';
     }
-    //validacija telefona
-    if (!Validation::phone($newListingData['phone'])) {
+   
+    if (!Validation::number($newListingData['phone'])) {
       $errors['phone'] = 'phone can contain only number';
+    }
+
+    if (!Validation::alfa($newListingData['city'])) {
+      $errors['city'] = 'City cannot contain numbers';
+    }
+
+    if (!Validation::alfa($newListingData['state'])) {
+      $errors['state'] = 'State cannot contain numbers';
+    }
+
+    if (!Validation::alfa($newListingData['title'])) {
+      $errors['title'] = 'Job Title cannot contain numbers';
+    }
+
+    if (!Validation::alfa($newListingData['tags'])) {
+      $errors['tags'] = 'Tags cannot contain numbers';
+    }
+
+    if (!Validation::alfaNumeric($newListingData['address'])) {
+      $errors['address'] = 'The field address can contain letters and numbers';
+    }
+
+    if (!Validation::alfaNumericPlus($newListingData['requirements'])) {
+      $errors['requirements'] = 'Requirements can contain letters, numbers, and ?,!,-,+';
+    }
+
+    if (!Validation::alfaNumericPlus($newListingData['requirements'])) {
+      $errors['requirements'] = 'Requirments can contain letters, numbers, and ?,!,-,+';
+    }
+
+    if (!Validation::alfaNumericPlus($newListingData['benefits'])) {
+      $errors['benefits'] = 'Benefits can contain letters, numbers, and ?,!,-,+';
+    }
+
+    if (!Validation::alfaNumericPlus($newListingData['description'])) {
+      $errors['description'] = 'Description can contain letters, numbers, and ?,!,-,+';
+    }
+
+    if (!Validation::alfaNumericPlus($newListingData['role_summary'])) {
+      $errors['description'] = 'Description can contain letters, numbers, and ?,!,-,+';
+    }
+
+    if (!Validation::number($newListingData['salary'])) {
+      $errors['salary'] = 'Salary can contain only numbers';
+    }
+
+    if (!Validation::workLocation($newListingData['work_location'])) {
+      $errors['work_location'] = 'Work Location can be remote, hybrid or on-site';
     }
 
 
@@ -227,7 +275,7 @@ class ListingController
     $updatedValues = [];
 
     $updatedValues = array_intersect_key($_POST, array_flip($allowedFields));
-    $updateValues = array_map('sanitize', $updatedValues);
+    $updatedValues = array_map('sanitize', $updatedValues);
 
     $requiredFields = ['company', 'city', 'state', 'address', 'email', 'title', 'role_summary', 'description', 'requirements', 'benefits', 'tags', 'work_location'];
 
@@ -241,13 +289,61 @@ class ListingController
       }
     }
 
-    //validacija mail
+    //Extra validation
     if (!Validation::email($updatedValues['email'])) {
       $errors['phone'] = 'Field email is not valid';
     }
-    //validacija telefona
-    if (!Validation::phone($updatedValues['phone'])) {
-      $errors['phone'] = 'phone can contain only number';
+
+    if (!Validation::number($updatedValues['phone'])) {
+      $errors['phone'] = 'Phone can contain only number';
+    }
+
+    if (!Validation::alfa($updatedValues['city'])) {
+      $errors['city'] = 'City cannot contain numbers';
+    }
+
+    if (!Validation::alfa($updatedValues['state'])) {
+      $errors['state'] = 'State cannot contain numbers';
+    }
+
+    if (!Validation::alfa($updatedValues['title'])) {
+      $errors['title'] = 'Job Title cannot contain numbers';
+    }
+
+    if (!Validation::alfa($updatedValues['tags'])) {
+      $errors['tags'] = 'Tags cannot contain numbers';
+    }
+
+    if (!Validation::alfaNumeric($updatedValues['address'])) {
+      $errors['address'] = 'The field address can contain letters and numbers';
+    }
+
+    if (!Validation::alfaNumericPlus($updatedValues['requirements'])) {
+      $errors['requirements'] = 'Requirements can contain letters, numbers, and ?,!,-,+';
+    }
+
+    if (!Validation::alfaNumericPlus($updatedValues['requirements'])) {
+      $errors['requirements'] = 'Requirments can contain letters, numbers, and ?,!,-,+';
+    }
+
+    if (!Validation::alfaNumericPlus($updatedValues['benefits'])) {
+      $errors['benefits'] = 'Benefits can contain letters, numbers, and ?,!,-,+';
+    }
+
+    if (!Validation::alfaNumericPlus($updatedValues['description'])) {
+      $errors['description'] = 'Description can contain letters, numbers, and ?,!,-,+';
+    }
+
+    if (!Validation::alfaNumericPlus($updatedValues['role_summary'])) {
+      $errors['description'] = 'Description can contain letters, numbers, and ?,!,-,+';
+    }
+
+    if (!Validation::number($updatedValues['salary'])) {
+      $errors['salary'] = 'Salary can contain only numbers';
+    }
+
+    if (!Validation::workLocation($updatedValues['work_location'])) {
+      $errors['work_location'] = 'Work Location can be remote, hybrid or on-site';
     }
 
     if (!empty($errors)) {
@@ -282,34 +378,34 @@ class ListingController
    * @return void
    */
 
-  public function search() {
-   // inspectAndDie($_GET);
-   $keywords = isset($_GET['keywords']) ? sanitize($_GET['keywords']) : "";
-   $location = isset($_GET['location']) ? sanitize($_GET['location']) : "";
+  public function search()
+  {
+    // inspectAndDie($_GET);
+    $keywords = isset($_GET['keywords']) ? sanitize($_GET['keywords']) : "";
+    $location = isset($_GET['location']) ? sanitize($_GET['location']) : "";
 
-   $query = "SELECT * FROM `listings` WHERE (`title` LIKE :keywords OR tags LIKE :keywords OR company LIKE :keywords OR work_location LIKE :keywords) AND (city LIKE :location OR state LIKE :location)";
-   $params = [
-    'keywords' => "%{$keywords}%",
-    'location' => "%{$location}%"
-   ];
+    $query = "SELECT * FROM `listings` WHERE (`title` LIKE :keywords OR tags LIKE :keywords OR company LIKE :keywords OR work_location LIKE :keywords) AND (city LIKE :location OR state LIKE :location)";
+    $params = [
+      'keywords' => "%{$keywords}%",
+      'location' => "%{$location}%"
+    ];
 
-   $listings = $this->db->query($query, $params)->fetchAll();
+    $listings = $this->db->query($query, $params)->fetchAll();
 
-   if (!$listings) {
-    $_SESSION['error_message'] = 'Not match for ' . $keywords;
+    if (!$listings) {
+      $_SESSION['error_message'] = 'Not match for ' . $keywords;
+      loadView('/listings/index', [
+        'listings' => $listings,
+        'keywords' => $keywords,
+        'location' => $location
+      ]);
+      exit;
+    }
+    //inspectAndDie($listings);
     loadView('/listings/index', [
       'listings' => $listings,
       'keywords' => $keywords,
       'location' => $location
-     ]);
-     exit;
-   }
-   //inspectAndDie($listings);
-   loadView('/listings/index', [
-    'listings' => $listings,
-    'keywords' => $keywords,
-    'location' => $location
-   ]);
-
+    ]);
   }
 }
