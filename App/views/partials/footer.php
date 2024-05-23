@@ -14,24 +14,11 @@
         <hr class="mb-4">
         <div class="row align-items centar">
             <div class="col-md-6 col-lg-6">
-                <p> <strong>Follow Us on Social Networks</strong></p>
+                <p> <strong>Unlock Your Career Potencional</strong></p>
             </div>
             <div class="col-md-6 col-lg-6">
                 <div class="text-center text-md-right">
-                    <ul class="list-unstyled list-inline">
-                        <li class="list-inline-item">
-                            <a href="#" class="btn-floating btn-sm text-white m-2" style="font-size: 30px;" ;><i class="fab fa-facebook"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" class="btn-floating btn-sm m-2 text-white" style="font-size: 30px;" ;><i class="fab fa-google-plus"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" class="btn-floating btn-sm m-2 text-white" style="font-size: 30px;" ;><i class="fab fa-instagram"></i></a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#" class="btn-floating btn-sm m-2 text-white" style="font-size: 30px;" ;><i class="fab fa-youtube"></i></a>
-                        </li>
-                    </ul>
+                    <p>Discover the perfect job oppportunity for you</p>
                 </div>
             </div>
         </div>
