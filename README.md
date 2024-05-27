@@ -8,7 +8,7 @@ This job classifieds application is built using the principles of <b> Object-Ori
 2. Create a database called `joblistings`
 3. Import the `joblistings.sql` file into your database
 4. Rename `config/_db.php` to `config/db.php` amd update with your credentials
-5. Run compose install to set up the autoloading
+5. Run `composer install` to set up the autoloading
 6. Set your document root to the public directory
 
 <h3 align="left">Setting the Document Root</h3>
@@ -16,7 +16,9 @@ You will need to set your document root to public directory:
 If you are using the PHP built-in server, you can run the following command:
 
 
-`php -S localhost:8000 -t public`
+```conf
+php -S localhost:8000 -t public
+```
 
 If you are using XAMPP, you can set the document root in the `httpd.conf` file. Here is an example:
 
